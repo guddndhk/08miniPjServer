@@ -62,4 +62,34 @@ public class UserRestController {
 		
 		return dbUser;
 	}
+
+	@RequestMapping( value="json/updateUser/{userId}", method=RequestMethod.POST )
+	public User updateUser( @RequestBody User user ,@PathVariable String userId, HttpSession session) throws Exception{
+
+		System.out.println("/user/json/updateUser : POST");
+		//Business Logic
+		//User user2 = userService.updateUser(userId);
+		//User user = userService.getUser(userId);
+		
+		
+		user.setUserId(userId);
+		userService.updateUser(user);
+		
+//		String sessionId=((User)session.getAttribute("user")).getUserId();
+		
+//		if(sessionId.equals(user.getUserId())){
+//			session.setAttribute("user", user);
+//		}
+		
+		user.setUserId(user.getUserId());
+		System.out.println("restuser"+user);
+		
+		return user;
+	}
+
+
+
+
+
+
 }
