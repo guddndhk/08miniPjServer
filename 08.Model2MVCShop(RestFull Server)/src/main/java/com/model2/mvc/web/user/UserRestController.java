@@ -87,7 +87,15 @@ public class UserRestController {
 		return user;
 	}
 
+	@RequestMapping( value="json/addUser", method=RequestMethod.POST )
+	public void addUser( @RequestBody User user ) throws Exception {
 
+		System.out.println("/user/json/addUser : POST");
+		//Business Logic
+		userService.addUser(user);
+		
+		
+	}
 
 
 
